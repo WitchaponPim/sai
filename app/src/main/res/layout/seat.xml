@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/seat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_seat" />
+    <ImageView
+        android:id="@+id/out"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_out" />
+
+    <TextView
+        android:layout_below="@id/seat"
+        android:id="@+id/number"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textColor="#5b2c6f"
+
+        android:layout_centerInParent="true"
+        android:text="1000"
+        android:textSize="10dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
