@@ -24,6 +24,8 @@ import com.example.tan.mtapp.API.HistoryCallbackListener;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
 
+import java.util.List;
+
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 
@@ -51,9 +53,14 @@ public class MenuActivity extends AppCompatActivity {
         }
     };
     HistoryCallbackListener historyCallbackListener = new HistoryCallbackListener() {
+//        @Override
+//        public void onResponse(HistoryMedel historyMedel, Retrofit retrofit) {
+//            Log.d(TAG, "onResponse: history");
+//            StaticClass.HISTORY_MODEL = historyMedel;
+//        }
+
         @Override
-        public void onResponse(HistoryMedel historyMedel, Retrofit retrofit) {
-            Log.d(TAG, "onResponse: history");
+        public void onResponse(List<HistoryMedel> historyMedel, Retrofit retrofit) {
             StaticClass.HISTORY_MODEL = historyMedel;
         }
 
@@ -79,6 +86,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         connect.getAc(activityCallbackListener);
+        connect.getHistory(historyCallbackListener,StaticClass.USER_MODEL.getProfile().getId_member());
 //        connect.getHistory(historyCallbackListener,StaticClass.USER_MODEL.getProfile().getId_member());
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);

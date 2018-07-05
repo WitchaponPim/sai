@@ -8,6 +8,8 @@ import com.example.tan.mtapp.Model.HistoryMedel;
 import com.example.tan.mtapp.Model.SeatModel;
 import com.example.tan.mtapp.Model.UserModel;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -56,6 +58,6 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("getHistory.php")
-    Call<HistoryMedel> getHistory(@Field("idMem") String idMem);
+    Call<List<HistoryMedel>> getHistory(@Field("idMem") String idMem);
 
 }

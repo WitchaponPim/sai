@@ -5,8 +5,11 @@ import android.telecom.Call;
 import com.example.tan.mtapp.Model.AcDetailModel;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
+
 import com.example.tan.mtapp.Model.SeatModel;
 import com.example.tan.mtapp.Model.UserModel;
+
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Callback;
@@ -209,22 +212,22 @@ public class ConnectionManager {
     }
 
     public void getHistory(final HistoryCallbackListener listener, String member_id) {
-        retrofit2.Call<HistoryMedel> call = con.getHistory(member_id);
-        call.enqueue(new Callback<HistoryMedel>() {
+        retrofit2.Call<List<HistoryMedel>> call = con.getHistory(member_id);
+        call.enqueue(new Callback<List<HistoryMedel>>() {
             @Override
-            public void onResponse(retrofit2.Call<HistoryMedel> call, Response<HistoryMedel> response) {
-                HistoryMedel historyMedel = response.body();
-                if (historyMedel == null) {
+            public void onResponse(retrofit2.Call<List<HistoryMedel>> call, Response<List<HistoryMedel>> response) {
+                List<HistoryMedel> model = response.body();
+                if (model == null) {
                     //404 or the response cannot be converted to User.
                     ResponseBody responseBody = response.errorBody();
                 } else {
                     //200
-                    listener.onResponse(historyMedel, retrofit);
+                    listener.onResponse(model, retrofit);
                 }
             }
 
             @Override
-            public void onFailure(retrofit2.Call<HistoryMedel> call, Throwable t) {
+            public void onFailure(retrofit2.Call<List<HistoryMedel>> call, Throwable t) {
                 listener.onFailure(t);
             }
         });

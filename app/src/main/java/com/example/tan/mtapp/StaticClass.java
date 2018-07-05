@@ -27,7 +27,7 @@ public class StaticClass {
     public static UserModel USER_MODEL;
     public static ActivityModel ACTIVITY_MODEL;
     public static ActivityModel ACTIVITY_MODEL2;
-    public static HistoryMedel HISTORY_MODEL;
+    public static List<HistoryMedel> HISTORY_MODEL;
     public static ActivityModel.DetailBean ACTIVITY_PICKER;
     public static AcDetailModel ACTIVITY_DETAIL;
     public static ActivityModel ACTIVITY_QR;
