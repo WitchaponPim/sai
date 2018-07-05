@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.example.tan.mtapp.Model.AcDetailModel;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.Model.ReserveModel;
 import com.example.tan.mtapp.Model.SeatModel;
 import com.example.tan.mtapp.Model.UserModel;
 
@@ -52,9 +53,9 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("postSeat.php")
-    Call<ActivityModel> postSeat(@Field("activity_id") String activity_id,
-                                 @Field("member_id") String member_id,
-                                 @Field("idSit") String idSit);
+    Call<ReserveModel> postSeat(@Field("activity_id") String activity_id,
+                                @Field("member_id") String member_id,
+                                @Field("idSit") String idSit);
 
     @FormUrlEncoded
     @POST("getHistory.php")

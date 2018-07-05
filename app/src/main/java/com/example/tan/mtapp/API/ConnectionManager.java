@@ -6,6 +6,7 @@ import com.example.tan.mtapp.Model.AcDetailModel;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
 
+import com.example.tan.mtapp.Model.ReserveModel;
 import com.example.tan.mtapp.Model.SeatModel;
 import com.example.tan.mtapp.Model.UserModel;
 
@@ -188,23 +189,23 @@ public class ConnectionManager {
 
     }
 
-    public void postSeat(final ActivityCallbackListener listener, String activity_id, String member_id, String idSit) {
-        retrofit2.Call<ActivityModel> call = con.postSeat(activity_id,member_id,idSit);
-        call.enqueue(new Callback<ActivityModel>() {
+    public void postSeat(final ReserveCallbackListener listener, String activity_id, String member_id, String idSit) {
+        retrofit2.Call<ReserveModel> call = con.postSeat(activity_id,member_id,idSit);
+        call.enqueue(new Callback<ReserveModel>() {
             @Override
-            public void onResponse(retrofit2.Call<ActivityModel> call, Response<ActivityModel> response) {
-                ActivityModel activityModel = response.body();
-                if (activityModel == null) {
+            public void onResponse(retrofit2.Call<ReserveModel> call, Response<ReserveModel> response) {
+                ReserveModel reserveModel = response.body();
+                if (reserveModel == null) {
                     //404 or the response cannot be converted to User.
                     ResponseBody responseBody = response.errorBody();
                 } else {
                     //200
-                    listener.onResponse(activityModel, retrofit);
+                    listener.onResponse(reserveModel, retrofit);
                 }
             }
 
             @Override
-            public void onFailure(retrofit2.Call<ActivityModel> call, Throwable t) {
+            public void onFailure(retrofit2.Call<ReserveModel> call, Throwable t) {
                 listener.onFailure(t);
             }
         });

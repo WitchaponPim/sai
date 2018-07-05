@@ -31,7 +31,7 @@ import java.util.List;
 
 import retrofit2.Retrofit;
 
-public class ReservActivity extends AppCompatActivity {
+public abstract class ReservActivity extends AppCompatActivity {
 
     List<String> test;
     String TAG = "faker";
@@ -42,7 +42,7 @@ public class ReservActivity extends AppCompatActivity {
     TextView sdate, edate, dis, act;
     String ID;
     ConnectionManager connect = new ConnectionManager();
-    ActivityCallbackListener activityCallbackListener = new ActivityCallbackListener() {
+    ReservActivity reservActivity = new ReservActivity() {
 
         @Override
         public void onResponse(final ActivityModel activityModel, Retrofit retrofit) {
@@ -61,7 +61,6 @@ public class ReservActivity extends AppCompatActivity {
 //                    intent.putExtra("mIDMember",StaticClass.USER_MODEL.getProfile().getId_member());
 //                    intent.putExtra("mIDActivity",activityModel.getDetail().get(0).getId_activity());
 //                    intent.putExtra("mIDReserve",activityModel.getDetail().get(0).getId_reserve());
-                    Log.d(TAG, "seatClick: getId_activity"+activityModel.getDetail().get(0).getId_activity());
                     Log.d(TAG, "seatClick: getid_reserve"+activityModel.getDetail().get(0).getId_reserve());
 
 //                    startActivity(intent);
@@ -70,10 +69,6 @@ public class ReservActivity extends AppCompatActivity {
             builder.show();
         }
 
-        @Override
-        public void onFailure(Throwable t) {
-
-        }
     };
     AcDetailCallbackListener acDetailCallbackListener = new AcDetailCallbackListener() {
         @Override
@@ -134,10 +129,10 @@ public class ReservActivity extends AppCompatActivity {
                             }
                         });
                         StaticClass.toast(getApplicationContext(), activityAdapters.get(position).getId_sit());
-                        connect.postSeat(activityCallbackListener,
-                                StaticClass.ACTIVITY_PICKER.getId_activity()
-                                , StaticClass.USER_MODEL.getProfile().getId_member()
-                                , activityAdapters.get(position).getId_sit());
+//                        connect.postSeat(reservActivity,
+//                                StaticClass.ACTIVITY_PICKER.getId_activity()
+//                                , StaticClass.USER_MODEL.getProfile().getId_member()
+//                                , activityAdapters.get(position).getId_sit());
 //                finish();
 //                        connect.getAcDetail(acDetailCallbackListener, StaticClass.USER_MODEL.getProfile().getUsername());
 
@@ -161,14 +156,19 @@ public class ReservActivity extends AppCompatActivity {
             mRegis.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    connect.postSeat(activityCallbackListener,
-                            StaticClass.ACTIVITY_PICKER.getId_activity()
-                            , StaticClass.USER_MODEL.getProfile().getId_member()
-                            , "-1");
+//                    connect.postSeat(reservActivity,
+//                            StaticClass.ACTIVITY_PICKER.getId_activity()
+//                            , StaticClass.USER_MODEL.getProfile().getId_member()
+//                            , "-1");
                 }
             });
         }
     }
 
 
+    public abstract void onResponse(ActivityModel activityModel, Retrofit retrofit);
+
+    public void onFailure(Throwable t) {
+
+    }
 }
