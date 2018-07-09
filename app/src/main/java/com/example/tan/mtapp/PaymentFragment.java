@@ -3,18 +3,25 @@ package com.example.tan.mtapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tan.mtapp.API.ConnectionManager;
+import com.example.tan.mtapp.API.HistoryCallbackListener;
 import com.example.tan.mtapp.Adapter.ConfirmAdapter;
 import com.example.tan.mtapp.Adapter.CustomDialog_detail;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
 
 import java.util.List;
+
+import okhttp3.ResponseBody;
+import retrofit2.Retrofit;
 
 
 /**
@@ -24,6 +31,31 @@ public class PaymentFragment extends Fragment {
 
     RecyclerView mRecyclerView;
     ConfirmAdapter adapter;
+    View view;
+    String TAG = "PaymentFragment";
+    ConnectionManager connect = new ConnectionManager();
+    HistoryCallbackListener historyCallbackListener = new HistoryCallbackListener() {
+
+        @Override
+        public void onResponse(List<HistoryMedel> historyMedel, Retrofit retrofit) {
+            StaticClass.HISTORY_MODEL = historyMedel;
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+            Log.d(TAG, "onFailure: history" + t);
+        }
+
+        @Override
+        public void onBodyError(ResponseBody responseBody) {
+            Log.d(TAG, "onBodyError: history" + responseBody);
+        }
+
+        @Override
+        public void onBodyErrorIsNull() {
+            Log.d(TAG, "onBodyErrorIsNull: history");
+        }
+    };
 
     public PaymentFragment() {
         // Required empty public constructor
@@ -33,8 +65,21 @@ public class PaymentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_payment, container, false);
+        view = inflater.inflate(R.layout.fragment_payment, container, false);
+        final SwipeRefreshLayout pullToRefresh = view.findViewById(R.id.swiperefresh);
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                connect.getHistory(historyCallbackListener, StaticClass.USER_MODEL.getProfile().getId_member());
+                pullToRefresh.setRefreshing(false);
+            }
+        });
+        setPayment();
+        // Inflate the layout for this fragment
+        return view;
+    }
 
+    public void setPayment(){
         mRecyclerView = (RecyclerView) view.findViewById(R.id.reHis);
         adapter = new ConfirmAdapter(getContext(), StaticClass.HISTORY_MODEL, new ConfirmAdapter.OnItemClickListener() {
             @Override
@@ -56,9 +101,6 @@ public class PaymentFragment extends Fragment {
                 return 1;
             }
         });
-
-        // Inflate the layout for this fragment
-        return view;
     }
 
 }

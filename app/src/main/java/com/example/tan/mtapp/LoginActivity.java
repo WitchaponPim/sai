@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     };
     Button mLogin, mRegis;
     EditText mUsername, mPassword;
-    String TAG = "Debug => ";
+    String TAG = "LoginActivity";
     String status;
 
     private SharedPreferences mPrefs;
@@ -106,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
+        //comment close auto login
         if (user != null && pass != null) {
             progressDialog = ProgressDialog.show(this, "Please wait", "Loading...", true, false);
             connect.login(loginCallbackListener, user, pass);

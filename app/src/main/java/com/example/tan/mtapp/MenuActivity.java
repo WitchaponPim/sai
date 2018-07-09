@@ -21,8 +21,10 @@ import android.view.MenuItem;
 import com.example.tan.mtapp.API.ActivityCallbackListener;
 import com.example.tan.mtapp.API.ConnectionManager;
 import com.example.tan.mtapp.API.HistoryCallbackListener;
+import com.example.tan.mtapp.API.SearchCallbackListener;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.Model.SearchModel;
 
 import java.util.List;
 
@@ -37,6 +39,18 @@ public class MenuActivity extends AppCompatActivity {
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     ConnectionManager connect = new ConnectionManager();
+    SearchCallbackListener searchCallbackListener = new SearchCallbackListener() {
+        @Override
+        public void onResponse(List<SearchModel> searchModel, Retrofit retrofit) {
+            StaticClass.SEARCH_MODEL = searchModel;
+            Log.d(TAG, "onResponse: search " + searchModel.get(0).getType());
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+
+        }
+    };
     ActivityCallbackListener activityCallbackListener = new ActivityCallbackListener() {
         @Override
         public void onResponse(ActivityModel activityModel, Retrofit retrofit) {
@@ -53,11 +67,6 @@ public class MenuActivity extends AppCompatActivity {
         }
     };
     HistoryCallbackListener historyCallbackListener = new HistoryCallbackListener() {
-//        @Override
-//        public void onResponse(HistoryMedel historyMedel, Retrofit retrofit) {
-//            Log.d(TAG, "onResponse: history");
-//            StaticClass.HISTORY_MODEL = historyMedel;
-//        }
 
         @Override
         public void onResponse(List<HistoryMedel> historyMedel, Retrofit retrofit) {
@@ -86,7 +95,8 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         connect.getAc(activityCallbackListener);
-        connect.getHistory(historyCallbackListener,StaticClass.USER_MODEL.getProfile().getId_member());
+        connect.getSearch(searchCallbackListener);
+        connect.getHistory(historyCallbackListener, StaticClass.USER_MODEL.getProfile().getId_member());
 //        connect.getHistory(historyCallbackListener,StaticClass.USER_MODEL.getProfile().getId_member());
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -113,7 +123,11 @@ public class MenuActivity extends AppCompatActivity {
                 case 1:
                     return new ActivityFragment();
                 default:
-                    return new PaymentFragment();
+                    if (StaticClass.USER_MODEL.getProfile().getType().equals("emp")) {
+                        return new SearchFragment();
+                    } else {
+                        return new PaymentFragment();
+                    }
             }
         }
 
@@ -171,13 +185,20 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.logout:
                 onLogoutPressed();
                 return true;
 
-            case R.id.Scanqr:
-                Intent intent = new Intent(MenuActivity.this, ScanActivity.class);
+            case R.id.EditPro:
+                intent = new Intent(MenuActivity.this, ScanActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+
+            case R.id.ARMap:
+                intent = new Intent(MenuActivity.this, MapsActivity.class);
                 startActivity(intent);
                 finish();
                 return true;

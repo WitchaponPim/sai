@@ -1,13 +1,10 @@
 package com.example.tan.mtapp.Model;
-
-import com.google.gson.annotations.SerializedName;
-
 public class UserModel {
 
     /**
      * status : 200
      * msg : OK
-     * profile : {"id_member":"2","member_name":"Charanthorn","member_surname":"Reanfai","tel":"0802802012","email":"charanthorn93@gmail.com","username":"11","password":"11","address":"179 Sukumvit 62","last active-time":"","id_emp":"","identity":"0"}
+     * profile : {"id_member":"2","member_name":"Charant","member_surname":"Reanfai112","tel":"080280201212","email":"charanthorn93@gmail.com","username":"11","password":"11","address":"179 Sukumvit 62","lastactivetime":null,"identity":"0","IDcard":"0","job":"","sex":"","age":"0","type":"member"}
      */
 
     private String status;
@@ -41,16 +38,20 @@ public class UserModel {
     public static class ProfileBean {
         /**
          * id_member : 2
-         * member_name : Charanthorn
-         * member_surname : Reanfai
-         * tel : 0802802012
+         * member_name : Charant
+         * member_surname : Reanfai112
+         * tel : 080280201212
          * email : charanthorn93@gmail.com
          * username : 11
          * password : 11
          * address : 179 Sukumvit 62
-         * last active-time :
-         * id_emp :
+         * lastactivetime : null
          * identity : 0
+         * IDcard : 0
+         * job : 
+         * sex : 
+         * age : 0
+         * type : member
          */
 
         private String id_member;
@@ -61,10 +62,13 @@ public class UserModel {
         private String username;
         private String password;
         private String address;
-        @SerializedName("last active-time")
-        private String _$LastActivetime150; // FIXME check this code
-        private String id_emp;
+        private String lastactivetime;
         private String identity;
+        private String IDcard;
+        private String job;
+        private String sex;
+        private String age;
+        private String type;
 
         public String getId_member() {
             return id_member;
@@ -130,20 +134,12 @@ public class UserModel {
             this.address = address;
         }
 
-        public String get_$LastActivetime150() {
-            return _$LastActivetime150;
+        public String getLastactivetime() {
+            return lastactivetime;
         }
 
-        public void set_$LastActivetime150(String _$LastActivetime150) {
-            this._$LastActivetime150 = _$LastActivetime150;
-        }
-
-        public String getId_emp() {
-            return id_emp;
-        }
-
-        public void setId_emp(String id_emp) {
-            this.id_emp = id_emp;
+        public void setLastactivetime(String lastactivetime) {
+            this.lastactivetime = lastactivetime;
         }
 
         public String getIdentity() {
@@ -152,6 +148,46 @@ public class UserModel {
 
         public void setIdentity(String identity) {
             this.identity = identity;
+        }
+
+        public String getIDcard() {
+            return IDcard;
+        }
+
+        public void setIDcard(String IDcard) {
+            this.IDcard = IDcard;
+        }
+
+        public String getJob() {
+            return job;
+        }
+
+        public void setJob(String job) {
+            this.job = job;
+        }
+
+        public String getSex() {
+            return sex;
+        }
+
+        public void setSex(String sex) {
+            this.sex = sex;
+        }
+
+        public String getAge() {
+            return age;
+        }
+
+        public void setAge(String age) {
+            this.age = age;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
         }
     }
 }

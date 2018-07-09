@@ -7,6 +7,7 @@ import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
 
 import com.example.tan.mtapp.Model.ReserveModel;
+import com.example.tan.mtapp.Model.SearchModel;
 import com.example.tan.mtapp.Model.SeatModel;
 import com.example.tan.mtapp.Model.UserModel;
 
@@ -108,6 +109,29 @@ public class ConnectionManager {
 
             @Override
             public void onFailure(retrofit2.Call<ActivityModel> call, Throwable t) {
+                listener.onFailure(t);
+            }
+        });
+
+    }
+
+    public void getSearch(final SearchCallbackListener listener) {
+        retrofit2.Call<List<SearchModel>> call = con.getSearch();
+        call.enqueue(new Callback<List<SearchModel>>() {
+            @Override
+            public void onResponse(retrofit2.Call<List<SearchModel>> call, Response<List<SearchModel>> response) {
+                List<SearchModel> searchModel = response.body();
+                if (searchModel == null) {
+                    //404 or the response cannot be converted to User.
+                    ResponseBody responseBody = response.errorBody();
+                } else {
+                    //200
+                    listener.onResponse(searchModel, retrofit);
+                }
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<List<SearchModel>> call, Throwable t) {
                 listener.onFailure(t);
             }
         });

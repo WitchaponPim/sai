@@ -35,6 +35,7 @@ public class ActivityFragment extends Fragment {
     GridLayoutManager mGridLayoutManager;
     String ID;
     String TAG = "Activity";
+    View view;
 
     ConnectionManager connect = new ConnectionManager();
     ActivityCallbackListener activityCallbackListener = new ActivityCallbackListener() {
@@ -42,6 +43,7 @@ public class ActivityFragment extends Fragment {
         public void onResponse(ActivityModel activityModel, Retrofit retrofit) {
             StaticClass.ACTIVITY_MODEL = activityModel;
 //            StaticClass.toast(getContext(), "200 : OK");
+            setMenu();
             Log.d(TAG, "onResponse: ");
             Log.d(TAG, "onResponse: " + activityModel.getDetail().size());
 
@@ -56,14 +58,14 @@ public class ActivityFragment extends Fragment {
         @Override
         public void onResponse(SeatModel seatModel, Retrofit retrofit) {
             StaticClass.seatRoom = seatModel.getDetail();
-            Intent intent = new Intent(getActivity(), ReservActivity.class);
-            intent.putExtra("ID",ID);
+            Intent intent = new Intent(getActivity(), ReserveActivity.class);
+            intent.putExtra("ID", ID);
             startActivity(intent);
         }
 
         @Override
         public void onFailure(Throwable t) {
-
+            Log.d(TAG, "onFailure: " + t);
         }
 
         @Override
@@ -84,7 +86,7 @@ public class ActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_activity, container, false);
+        view = inflater.inflate(R.layout.fragment_activity, container, false);
         final SwipeRefreshLayout pullToRefresh = view.findViewById(R.id.swiperefresh);
         pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -93,7 +95,11 @@ public class ActivityFragment extends Fragment {
                 pullToRefresh.setRefreshing(false);
             }
         });
+        setMenu();
+        return view;
+    }
 
+    public void setMenu() {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.ReAc);
 
         mActivityAdapter = new ActivityAdapter(getContext(), StaticClass.ACTIVITY_MODEL.getDetail(), new ActivityAdapter.OnItemClickListener() {
@@ -121,7 +127,7 @@ public class ActivityFragment extends Fragment {
                     startActivity(intent);
                 } else {
                     ID = activityAdapters.get(position).getId_room();
-                    connect.getSeat(seatCallbackListener,activityAdapters.get(position).getId_activity());
+                    connect.getSeat(seatCallbackListener, activityAdapters.get(position).getId_activity());
                 }
             }
         });
@@ -133,12 +139,12 @@ public class ActivityFragment extends Fragment {
             public int getSpanGroupIndex(int adapterPosition, int spanCount) {
                 return super.getSpanGroupIndex(adapterPosition, spanCount);
             }
+
             @Override
             public int getSpanSize(int position) {
                 return 1;
             }
         });
-        return view;
     }
 
 }

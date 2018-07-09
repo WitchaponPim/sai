@@ -14,14 +14,16 @@ import android.widget.TextView;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.R;
 import com.example.tan.mtapp.StaticClass;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MenuViewHolder> {
-    String TAG ="Adapter";
+    String TAG = "Adapter";
     Context mContext;
     List<ActivityModel.DetailBean> mActivityModel;
     OnItemClickListener mListener;
+    String URL = "http://meeting.wat-huathanon.com";
 
     public ActivityAdapter(Context context, List<ActivityModel.DetailBean> activityModels, OnItemClickListener listener) {
         this.mContext = context;
@@ -50,27 +52,30 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MenuVi
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView discription,roomName;
-        Button more,regis;
+        TextView discription, roomName, mDate;
+        Button more, regis;
+
         public MenuViewHolder(View itemView) {
             super(itemView);
 //            Log.d(TAG, "MenuViewHolder: ");
             discription = (TextView) itemView.findViewById(R.id.Description);
             roomName = (TextView) itemView.findViewById(R.id.roomName);
+            mDate = (TextView) itemView.findViewById(R.id.actDate);
             more = (Button) itemView.findViewById(R.id.btn1);
             regis = (Button) itemView.findViewById(R.id.btn2);
+            imageView = (ImageView) itemView.findViewById(R.id.imageVmenu);
 
             more.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    mListener.moreClick(mActivityModel,getAdapterPosition());
+                    mListener.moreClick(mActivityModel, getAdapterPosition());
                 }
             });
             regis.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mListener.regisClick(mActivityModel,getAdapterPosition());
+                    mListener.regisClick(mActivityModel, getAdapterPosition());
                 }
             });
 
@@ -84,19 +89,33 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MenuVi
         }
 
         public void setMenu(List<ActivityModel.DetailBean> activityAdapters, int position) {
-            Log.d(TAG, "setMenu: "+activityAdapters.get(position).getPicture());
-            discription.setText(activityAdapters.get(position).getAc_name());
-            roomName.setText(activityAdapters.get(position).getRoom_name());
-            if(activityAdapters.get(position).getActivity_pay().equals("0")){
+            String pic = null;
+            Log.d(TAG, "setMenu: " + activityAdapters.get(position).getPicture());
+            discription.setText("กิจกรรม : " + activityAdapters.get(position).getAc_name());
+            roomName.setText("ห้อง : " + activityAdapters.get(position).getRoom_name());
+            mDate.setText("วันที่จัด : \n" + activityAdapters.get(position).getStart_date().replace("2018", "18")
+                    + " - " + activityAdapters.get(position).getEnd_date().replace("2018", "18"));
+            //../project
+            if(!activityAdapters.get(position).getPicture().isEmpty()){
+                pic = activityAdapters.get(position).getPicture().replace("../project", "");
+            }
+            Picasso.get()
+                    .load(URL + pic)
+                    .error(R.drawable.pricess)
+                    .resize(80, 100)
+                    .centerCrop()
+                    .into(imageView);
+            if (activityAdapters.get(position).getActivity_pay().equals("0")) {
                 regis.setText("REGISTER");
-            }else{
-                regis.setText("RESERV");
+            } else {
+                regis.setText("RESERVE");
             }
         }
     }
 
     public interface OnItemClickListener {
         void moreClick(List<ActivityModel.DetailBean> activityAdapters, int position);
+
         void regisClick(List<ActivityModel.DetailBean> activityAdapters, int position);
     }
 }

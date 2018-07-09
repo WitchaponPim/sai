@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
 import com.example.tan.mtapp.R;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -24,6 +25,7 @@ public class ConfirmAdapter extends RecyclerView.Adapter<ConfirmAdapter.MenuView
     Context mContext;
     List<HistoryMedel> history;
     OnItemClickListener mListener;
+    String URL = "http://meeting.wat-huathanon.com";
 
     public ConfirmAdapter(Context context, List<HistoryMedel> activityModels, OnItemClickListener listener) {
         this.mContext = context;
@@ -59,6 +61,7 @@ public class ConfirmAdapter extends RecyclerView.Adapter<ConfirmAdapter.MenuView
             date = (TextView) itemView.findViewById(R.id.act_date);
             act = (TextView) itemView.findViewById(R.id.act_name);
             detail = (Button) itemView.findViewById(R.id.btn);
+            imageView = (ImageView) itemView.findViewById(R.id.imageVmenu);
             detail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -71,8 +74,19 @@ public class ConfirmAdapter extends RecyclerView.Adapter<ConfirmAdapter.MenuView
         }
 
         public void setMenu(List<HistoryMedel> activityAdapters, int position) {
+            String pic = null;
             date.setText(activityAdapters.get(position).getDate());
             act.setText(activityAdapters.get(position).getActivity_name());
+            //../project
+            if(!activityAdapters.get(position).getPicture().isEmpty()){
+                pic = activityAdapters.get(position).getPicture().replace("../project", "");
+            }
+            Picasso.get()
+                    .load(URL + pic)
+                    .error(R.drawable.pricess)
+                    .resize(80, 100)
+                    .centerCrop()
+                    .into(imageView);
 
         }
     }

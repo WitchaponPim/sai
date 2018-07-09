@@ -6,6 +6,7 @@ import com.example.tan.mtapp.Model.AcDetailModel;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
 import com.example.tan.mtapp.Model.ReserveModel;
+import com.example.tan.mtapp.Model.SearchModel;
 import com.example.tan.mtapp.Model.SeatModel;
 import com.example.tan.mtapp.Model.UserModel;
 
@@ -36,6 +37,9 @@ public interface APIService {
 
     @GET("getActivity.php")
     Call<ActivityModel> getActivity();
+
+    @GET("getSearch.php")
+    Call<List<SearchModel>> getSearch();
 
     @FormUrlEncoded
     @POST("postActivity.php")

@@ -12,6 +12,8 @@ import com.example.tan.mtapp.API.AcDetailCallbackListener;
 import com.example.tan.mtapp.Model.AcDetailModel;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.Model.ReserveModel;
+import com.example.tan.mtapp.Model.SearchModel;
 import com.example.tan.mtapp.Model.SeatModel;
 import com.example.tan.mtapp.Model.UserModel;
 
@@ -30,9 +32,10 @@ public class StaticClass {
     public static List<HistoryMedel> HISTORY_MODEL;
     public static ActivityModel.DetailBean ACTIVITY_PICKER;
     public static AcDetailModel ACTIVITY_DETAIL;
-    public static ActivityModel ACTIVITY_QR;
+    public static ReserveModel ACTIVITY_QR;
     public static ActivityModel ACTIVITY_REGIS;
     public static List<SeatModel.DetailBean> seatRoom;
+    public static List<SearchModel> SEARCH_MODEL;
 
     public static void toast(Context context, String string) {
         Toast toast = Toast.makeText(context, string, Toast.LENGTH_SHORT);

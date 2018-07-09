@@ -16,6 +16,7 @@ public class HistoryMedel {
      * people : 50
      * type : regis
      * status : 1
+     * picture : ../project/picactivity/img_5b29c78767e38.jpg
      * detail : [{"activity_name":"402","start_date":"2018-06-20","start_time":"08:00:00","end_date":"2018-06-21","end_time":"17:00:00"}]
      */
 
@@ -30,6 +31,7 @@ public class HistoryMedel {
     private String people;
     private String type;
     private String status;
+    private String picture;
     private List<DetailBean> detail;
 
     public String getId_register() {
@@ -118,6 +120,14 @@ public class HistoryMedel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public List<DetailBean> getDetail() {

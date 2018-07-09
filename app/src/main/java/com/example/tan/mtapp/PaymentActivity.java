@@ -31,7 +31,9 @@ public class PaymentActivity extends AppCompatActivity {
     Gallery gallery;
     ImageView slip;
     Button picker, upload;
-    String mIDMember, mIDActivity, mIDReserve;
+    String mIDMember = StaticClass.USER_MODEL.getProfile().getId_member();
+    String mIDActivity = StaticClass.ACTIVITY_QR.getId_reserve();
+    String mIDReserve = StaticClass.ACTIVITY_QR.getId_reserve();;
     String TAG = "Payment";
     File file;
 
@@ -40,9 +42,6 @@ public class PaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
         Bundle bundle = getIntent().getExtras();
-        mIDMember = bundle.getString("mIDMember");
-        mIDActivity = bundle.getString("mIDActivity");
-        mIDReserve = bundle.getString("mIDReserve");
 
         slip = (ImageView) findViewById(R.id.slip);
         picker = (Button) findViewById(R.id.picker);
@@ -125,6 +124,7 @@ public class PaymentActivity extends AppCompatActivity {
                 if (serverResponse != null) {
                     if (serverResponse.isSuccess()) {
                         Log.d(TAG, "onResponse : " + serverResponse.getMessage());
+                        finish();
                     } else {
 
                     }

@@ -8,8 +8,13 @@
         android:title="Logout"
         app:showAsAction="never" />
     <item
-        android:id="@+id/Scanqr"
+        android:id="@+id/EditPro"
         android:orderInCategory="100"
-        android:title="ScanQR"
+        android:title="Edit Profile"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/ARMap"
+        android:orderInCategory="100"
+        android:title="AR Map"
         app:showAsAction="never" />
 </menu>
