@@ -198,7 +198,7 @@ public class MenuActivity extends AppCompatActivity {
                 return true;
 
             case R.id.ARMap:
-                intent = new Intent(MenuActivity.this, MapsActivity.class);
+                intent = new Intent(MenuActivity.this, ARActivity.class);
                 startActivity(intent);
                 finish();
                 return true;
