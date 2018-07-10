@@ -56,6 +56,15 @@ public class SeatModel {
         private String number_sit;
         private String id_room;
         private String line;
+        private String check;
+
+        public String getCheck() {
+            return check;
+        }
+
+        public void setCheck(String check) {
+            this.check = check;
+        }
 
         public String getId_detail_sit() {
             return id_detail_sit;
