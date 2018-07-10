@@ -47,7 +47,6 @@ public class AROverlayView extends View {
     }
 
 
-    //time 1000
     public void updateCurrentLocation(Location currentLocation){
         this.currentLocation = currentLocation;
         this.invalidate();

@@ -194,13 +194,13 @@ public class MenuActivity extends AppCompatActivity {
             case R.id.EditPro:
                 intent = new Intent(MenuActivity.this, ScanActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
                 return true;
 
             case R.id.ARMap:
                 intent = new Intent(MenuActivity.this, ARActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
                 return true;
 
             default:
