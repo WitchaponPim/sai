@@ -1,4 +1,4 @@
-package com.example.tan.mtapp;
+package com.example.tan.mtapp.ARLocation;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -21,6 +21,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.tan.mtapp.R;
 
 public class ARActivity extends AppCompatActivity implements SensorEventListener, LocationListener {
 

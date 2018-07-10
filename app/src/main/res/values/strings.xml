@@ -36,4 +36,7 @@
     <string name="header">เกี่ยวกับเรา</string>
     <string name="resvre">Resvre</string>
     <string name="title_activity_maps">Map</string>
+
+    <!-- Content descriptions -->
+    <string name="open_channel_chat_content_desc_profile">Profile image</string>
 </resources>

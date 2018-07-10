@@ -16,7 +16,9 @@ import android.widget.ImageView;
 
 import com.example.tan.mtapp.API.ConnectUpload;
 import com.example.tan.mtapp.API.UploadService;
+import com.example.tan.mtapp.JClass.Gallery;
 import com.example.tan.mtapp.Model.UpPicModel;
+import com.example.tan.mtapp.staticPack.StaticClass;
 
 import java.io.File;
 

@@ -17,14 +17,27 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.tan.mtapp.API.ActivityCallbackListener;
 import com.example.tan.mtapp.API.ConnectionManager;
 import com.example.tan.mtapp.API.HistoryCallbackListener;
 import com.example.tan.mtapp.API.SearchCallbackListener;
+import com.example.tan.mtapp.ARLocation.ARActivity;
+import com.example.tan.mtapp.Fragment.ActivityFragment;
+import com.example.tan.mtapp.Fragment.ChatFragment;
+import com.example.tan.mtapp.Fragment.HomeFragment;
+import com.example.tan.mtapp.Fragment.PaymentFragment;
+import com.example.tan.mtapp.Fragment.SearchFragment;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
 import com.example.tan.mtapp.Model.SearchModel;
+import com.example.tan.mtapp.staticPack.PreferenceUtils;
+import com.example.tan.mtapp.staticPack.PushUtils;
+import com.example.tan.mtapp.staticPack.StaticClass;
+import com.sendbird.android.SendBird;
+import com.sendbird.android.SendBirdException;
+import com.sendbird.android.User;
 
 import java.util.List;
 
@@ -93,6 +106,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         connect.getAc(activityCallbackListener);
         connect.getSearch(searchCallbackListener);
@@ -121,6 +135,8 @@ public class MenuActivity extends AppCompatActivity {
                 case 0:
                     return new HomeFragment();
                 case 1:
+                    return new ChatFragment();
+                case 2:
                     return new ActivityFragment();
                 default:
                     if (StaticClass.USER_MODEL.getProfile().getType().equals("emp")) {
@@ -134,7 +150,7 @@ public class MenuActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 4;
         }
 
         @Override
@@ -143,8 +159,10 @@ public class MenuActivity extends AppCompatActivity {
                 case 0:
                     return "Home";
                 case 1:
-                    return "Activity";
+                    return "Chat";
                 case 2:
+                    return "Activity";
+                case 3:
                     return "Payment";
             }
             return null;

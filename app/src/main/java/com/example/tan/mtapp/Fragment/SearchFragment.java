@@ -1,4 +1,4 @@
-package com.example.tan.mtapp;
+package com.example.tan.mtapp.Fragment;
 
 
 import android.app.ProgressDialog;
@@ -11,10 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tan.mtapp.API.ConnectionManager;
-import com.example.tan.mtapp.API.SearchCallbackListener;
 import com.example.tan.mtapp.Adapter.SearchAdapter;
 import com.example.tan.mtapp.Model.SearchModel;
+import com.example.tan.mtapp.R;
+import com.example.tan.mtapp.staticPack.StaticClass;
 
 
 /**

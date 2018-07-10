@@ -6,16 +6,12 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tan.mtapp.API.AcDetailCallbackListener;
-import com.example.tan.mtapp.API.ConnectionManager;
-import com.example.tan.mtapp.Model.AcDetailModel;
+import com.example.tan.mtapp.staticPack.StaticClass;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-
-import retrofit2.Retrofit;
 
 public class QRActivity extends AppCompatActivity {
 

@@ -9,19 +9,17 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.TextView;
 
 import com.example.tan.mtapp.API.AcDetailCallbackListener;
 import com.example.tan.mtapp.API.ConnectionManager;
 import com.example.tan.mtapp.API.ReserveCallbackListener;
-import com.example.tan.mtapp.Adapter.SeatAdapter;
 import com.example.tan.mtapp.Adapter.SeatReAdapter;
 import com.example.tan.mtapp.Model.AcDetailModel;
 import com.example.tan.mtapp.Model.ReserveModel;
 import com.example.tan.mtapp.Model.SeatModel;
+import com.example.tan.mtapp.staticPack.StaticClass;
 
 import java.util.List;
 
@@ -30,7 +28,7 @@ import retrofit2.Retrofit;
 public class ReserveActivity extends AppCompatActivity {
 
     List<String> test;
-    String TAG = "faker";
+    String TAG = "ReserveActivity";
     RecyclerView mRecyclerView;
     SeatReAdapter adapter;
     GridLayoutManager mGridLayoutManager;
@@ -54,7 +52,6 @@ public class ReserveActivity extends AppCompatActivity {
         @Override
         public void onResponse(ReserveModel reserveModel, Retrofit retrofit) {
             StaticClass.ACTIVITY_QR = reserveModel;
-//            Log.d(TAG, "onResponse: " + activityModel.getQR());
             AlertDialog.Builder builder = new AlertDialog.Builder(ReserveActivity.this);
             builder.setMessage("Reserve Success");
             builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
@@ -97,31 +94,36 @@ public class ReserveActivity extends AppCompatActivity {
         act.setText(StaticClass.ACTIVITY_PICKER.getAc_name());
         sdate.setText("Start : " + StaticClass.ACTIVITY_PICKER.getStart_date() + " " + StaticClass.ACTIVITY_PICKER.getStart_time());
         edate.setText("End   : " + StaticClass.ACTIVITY_PICKER.getEnd_date() + " " + StaticClass.ACTIVITY_PICKER.getEnd_time());
-//        dis.setText(StaticClass.ACTIVITY_PICKER.getDetail());
 
         mRecyclerView = (RecyclerView) findViewById(R.id.Seat);
-//        Log.d(TAG, "onCreate: " + StaticClass.seatRoom.size());
 
         if (ID.equals("1") || ID.equals("8")) {
-            mRegis.setVisibility(View.INVISIBLE);
+            mRegis.setVisibility(View.VISIBLE);
             adapter = new SeatReAdapter(getApplicationContext(), StaticClass.seatRoom, new SeatReAdapter.OnItemClickListener() {
                 @Override
                 public void seatClick(List<SeatModel.DetailBean> activityAdapters, int position) {
                     if (activityAdapters.get(position).getStatus().equals("0")) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ReserveActivity.this);
-                        builder.setMessage("คุณ" + StaticClass.USER_MODEL.getProfile().getUsername() + "ได้จองเก้าอี้เบอรฺ " + activityAdapters.get(position).getId_sit());
-                        builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
+                        if (activityAdapters.get(position).getCheck()!=null){
+                            if (activityAdapters.get(position).getCheck().equals("1")){
+                                //remove
+                                activityAdapters.get(position).setCheck("0");
+                            }else {
+                                //swap
+                                activityAdapters.get(position).setCheck("1");
                             }
-                        });
-                        StaticClass.toast(getApplicationContext(), activityAdapters.get(position).getId_sit());
-                        connect.postSeat(reserveCallbackListener,
-                                StaticClass.ACTIVITY_PICKER.getId_activity()
-                                , StaticClass.USER_MODEL.getProfile().getId_member()
-                                , activityAdapters.get(position).getId_sit());
-                        connect.getAcDetail(acDetailCallbackListener, StaticClass.USER_MODEL.getProfile().getUsername());
+                        }else {
+                            //add
+                            activityAdapters.get(position).setCheck("1");
+                        }
+
+
+                        adapter.notifyDataSetChanged();
+                        StaticClass.toast(getApplicationContext(), String.valueOf(position));
+//                        connect.postSeat(reservActivity,
+//                                StaticClass.ACTIVITY_PICKER.getId_activity()
+//                                , StaticClass.USER_MODEL.getProfile().getId_member()
+//                                , activityAdapters.get(position).getId_sit());
+//                        connect.getAcDetail(acDetailCallbackListener, StaticClass.USER_MODEL.getProfile().getUsername());
 
                     } else {
                         StaticClass.toast(getApplicationContext(), "จองแล้วนะจ๊ะตะเอง");
@@ -139,14 +141,14 @@ public class ReserveActivity extends AppCompatActivity {
                 }
             });
         } else {
-            connect.getAcDetail(acDetailCallbackListener, StaticClass.USER_MODEL.getProfile().getUsername());
+//            connect.getAcDetail(acDetailCallbackListener, StaticClass.USER_MODEL.getProfile().getUsername());
             mRegis.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    connect.postSeat(reserveCallbackListener,
-                            StaticClass.ACTIVITY_PICKER.getId_activity()
-                            , StaticClass.USER_MODEL.getProfile().getId_member()
-                            , "-1");
+//                    connect.postSeat(reservActivity,
+//                            StaticClass.ACTIVITY_PICKER.getId_activity()
+//                            , StaticClass.USER_MODEL.getProfile().getId_member()
+//                            , "-1");
                 }
             });
         }

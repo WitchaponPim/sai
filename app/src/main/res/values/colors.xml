@@ -6,4 +6,17 @@
 
     <color name="colorHead">#44c761</color>
     <color name="colorFollow">#dcb448</color>
+
+    <!-- Selector -->
+    <color name="btn_create">#ffffff</color>
+    <color name="btn_create_disabled">#c1acff</color>
+    <color name="btn_edit">#ffffff</color>
+    <color name="btn_edit_disabled">#c1acff</color>
+    <color name="btn_send">#774df2</color>
+    <color name="btn_send_disabled">#8e8e8e</color>
+
+    <!-- Open Chat -->
+    <color name="openChatText">#47505d</color>
+    <color name="openChatNicknameOther">#3a414d</color>
+    <color name="openChatNicknameMe">#00BCD4</color>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.tan.mtapp;
+package com.example.tan.mtapp.JClass;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
+
+import com.example.tan.mtapp.staticPack.StaticClass;
 
 import java.io.File;
 import java.util.List;

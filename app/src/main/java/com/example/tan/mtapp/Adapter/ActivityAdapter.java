@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.R;
-import com.example.tan.mtapp.StaticClass;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

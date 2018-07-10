@@ -1,40 +1,23 @@
 package com.example.tan.mtapp;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.TextView;
 
-import com.example.tan.mtapp.API.AcDetailCallbackListener;
-import com.example.tan.mtapp.API.ActivityCallbackListener;
-import com.example.tan.mtapp.API.ConnectionManager;
-import com.example.tan.mtapp.API.SeatCallbackListener;
-import com.example.tan.mtapp.Adapter.ActivityAdapter;
-import com.example.tan.mtapp.Adapter.SeatAdapter;
 import com.example.tan.mtapp.Adapter.SeatReAdapter;
-import com.example.tan.mtapp.Model.AcDetailModel;
-import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.SeatModel;
+import com.example.tan.mtapp.staticPack.StaticClass;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Retrofit;
 
 public class ReservActivity extends AppCompatActivity {
 
     List<String> test;
-    String TAG = "faker";
+    String TAG = "ReservActivity";
     RecyclerView mRecyclerView;
     SeatReAdapter adapter;
     GridLayoutManager mGridLayoutManager;

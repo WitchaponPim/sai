@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "197002271630",
+    "firebase_url": "https://meeting-31071.firebaseio.com",
+    "project_id": "meeting-31071",
+    "storage_bucket": "meeting-31071.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197002271630:android:41a460c85fac07d9",
+        "android_client_info": {
+          "package_name": "com.example.tan.mtapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197002271630-a9oq1p941llgltfbi71ucsrhnslcigpu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tan.mtapp",
+            "certificate_hash": "b6cf6bdc218c727bac659efecc9b5b702d81971d"
+          }
+        },
+        {
+          "client_id": "197002271630-iuitavb94gs1fl0j489khbci9k7tgr67.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVbv47vXc0zXZ7pKdC_reJ21Sc0YeWBNw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197002271630-iuitavb94gs1fl0j489khbci9k7tgr67.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

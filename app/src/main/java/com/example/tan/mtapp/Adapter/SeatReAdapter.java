@@ -1,21 +1,16 @@
 package com.example.tan.mtapp.Adapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.SeatModel;
-import com.example.tan.mtapp.Model.SeatModel.DetailBean;
 import com.example.tan.mtapp.R;
-import com.example.tan.mtapp.StaticClass;
 
 import java.util.List;
 

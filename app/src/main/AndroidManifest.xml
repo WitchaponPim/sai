@@ -32,12 +32,22 @@
         <activity android:name=".DetailActivity" />
         <activity android:name=".RegisActivity" />
         <activity android:name=".QRActivity" />
-        <activity android:name=".Scan_qr" />
+        <activity android:name=".JClass.Scan_qr" />
         <activity android:name=".ScanActivity" />
         <activity android:name=".PaymentActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MapsActivity" />
-        <activity android:name=".ARActivity" />
+        <activity android:name=".ARLocation.ARActivity" />
+
+        <service android:name=".fcm.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".fcm.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
 
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.example.tan.mtapp.API.ConnectionManager;
 import com.example.tan.mtapp.API.RegisterCallbackListener;
 import com.example.tan.mtapp.Model.UserModel;
+import com.example.tan.mtapp.staticPack.StaticClass;
 
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;

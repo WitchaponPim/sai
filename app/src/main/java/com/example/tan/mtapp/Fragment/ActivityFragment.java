@@ -1,4 +1,4 @@
-package com.example.tan.mtapp;
+package com.example.tan.mtapp.Fragment;
 
 
 import android.content.DialogInterface;
@@ -20,6 +20,10 @@ import com.example.tan.mtapp.API.SeatCallbackListener;
 import com.example.tan.mtapp.Adapter.ActivityAdapter;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.SeatModel;
+import com.example.tan.mtapp.R;
+import com.example.tan.mtapp.RegisActivity;
+import com.example.tan.mtapp.ReserveActivity;
+import com.example.tan.mtapp.staticPack.StaticClass;
 
 import java.util.List;
 

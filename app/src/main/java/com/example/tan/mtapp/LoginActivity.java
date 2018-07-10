@@ -14,9 +14,16 @@ import android.widget.Toast;
 
 import com.example.tan.mtapp.API.ActivityCallbackListener;
 import com.example.tan.mtapp.API.ConnectionManager;
+import com.example.tan.mtapp.API.ConnectionManagers;
 import com.example.tan.mtapp.API.LoginCallbackListener;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.UserModel;
+import com.example.tan.mtapp.staticPack.PreferenceUtils;
+import com.example.tan.mtapp.staticPack.PushUtils;
+import com.example.tan.mtapp.staticPack.StaticClass;
+import com.sendbird.android.SendBird;
+import com.sendbird.android.SendBirdException;
+import com.sendbird.android.User;
 
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
@@ -30,9 +37,9 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onResponse(ActivityModel activityModel, Retrofit retrofit) {
             StaticClass.ACTIVITY_MODEL = activityModel;
-            StaticClass.toast(getApplicationContext(),"200 : OK");
+            StaticClass.toast(getApplicationContext(), "200 : OK");
             Log.d(TAG, "onResponse: ");
-            Log.d(TAG, "onResponse: "+activityModel.getDetail().size());
+            Log.d(TAG, "onResponse: " + activityModel.getDetail().size());
             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
             startActivity(intent);
             finish();
@@ -77,6 +84,8 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.dismiss();
 
                 if (status.equals("200")) {
+                    PreferenceUtils.setConnected(true);
+
                     onLoginSucced();
                 } else {
                     onLoginFailed();
@@ -128,6 +137,14 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+//        if (PreferenceUtils.getConnected()) {
+//            connectToSendBird(PreferenceUtils.getUserId(), PreferenceUtils.getNickname());
+//        }
+    }
+
     public void login() {
         Log.d(TAG, "Login");
         if (!validate()) {
@@ -140,6 +157,8 @@ public class LoginActivity extends AppCompatActivity {
         String password = mPassword.getText().toString();
 
         connect.login(loginCallbackListener, username, password);
+
+//        connectToSendBird(username, "User_" + username);
 
     }
 
@@ -177,5 +196,61 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    private void connectToSendBird(final String userId, final String userNickname) {
+        // Show the loading indicator
+        ConnectionManagers.login(userId, new SendBird.ConnectHandler() {
+            @Override
+            public void onConnected(User user, SendBirdException e) {
+                if (e != null) {
+                    // Error!
+                    Toast.makeText(
+                            LoginActivity.this, "" + e.getCode() + ": " + e.getMessage(),
+                            Toast.LENGTH_SHORT)
+                            .show();
+
+                    // Show login failure snackbar
+                    PreferenceUtils.setConnected(false);
+                    return;
+                }
+
+                PreferenceUtils.setNickname(user.getNickname());
+                PreferenceUtils.setProfileUrl(user.getProfileUrl());
+                PreferenceUtils.setConnected(true);
+
+                // Update the user's nickname
+                updateCurrentUserInfo(userNickname);
+                updateCurrentUserPushToken();
+
+                // Proceed to MainActivity
+//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                startActivity(intent);
+//                finish();
+            }
+        });
+    }
+
+    private void updateCurrentUserInfo(final String userNickname) {
+        SendBird.updateCurrentUserInfo(userNickname, null, new SendBird.UserInfoUpdateHandler() {
+            @Override
+            public void onUpdated(SendBirdException e) {
+                if (e != null) {
+                    // Error!
+                    Toast.makeText(
+                            LoginActivity.this, "" + e.getCode() + ":" + e.getMessage(),
+                            Toast.LENGTH_SHORT)
+                            .show();
+
+                    return;
+                }
+
+                PreferenceUtils.setNickname(userNickname);
+            }
+        });
+    }
+
+    private void updateCurrentUserPushToken() {
+        PushUtils.registerPushTokenForCurrentUser(LoginActivity.this, null);
     }
 }

@@ -15,8 +15,7 @@ import com.example.tan.mtapp.API.ActivityCallbackListener;
 import com.example.tan.mtapp.API.ConnectionManager;
 import com.example.tan.mtapp.Model.AcDetailModel;
 import com.example.tan.mtapp.Model.ActivityModel;
-
-import org.w3c.dom.Text;
+import com.example.tan.mtapp.staticPack.StaticClass;
 
 import retrofit2.Retrofit;
 

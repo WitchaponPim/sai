@@ -1,4 +1,4 @@
-package com.example.tan.mtapp;
+package com.example.tan.mtapp.ARLocation;
 
 import android.content.Context;
 import android.graphics.Canvas;

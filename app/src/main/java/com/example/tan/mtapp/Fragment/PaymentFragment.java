@@ -1,4 +1,4 @@
-package com.example.tan.mtapp;
+package com.example.tan.mtapp.Fragment;
 
 
 import android.os.Bundle;
@@ -15,8 +15,9 @@ import com.example.tan.mtapp.API.ConnectionManager;
 import com.example.tan.mtapp.API.HistoryCallbackListener;
 import com.example.tan.mtapp.Adapter.ConfirmAdapter;
 import com.example.tan.mtapp.Adapter.CustomDialog_detail;
-import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.R;
+import com.example.tan.mtapp.staticPack.StaticClass;
 
 import java.util.List;
 

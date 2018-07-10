@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.example.tan.mtapp.Model.SearchModel;
 import com.example.tan.mtapp.R;
-import com.example.tan.mtapp.StaticClass;
 
 import java.util.ArrayList;
 import java.util.List;

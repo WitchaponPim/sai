@@ -1,4 +1,4 @@
-package com.example.tan.mtapp;
+package com.example.tan.mtapp.ARLocation;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
