@@ -1,4 +1,7 @@
 <resources>
+    <!-- all -->
+    <string name="all_app_version">Sample UI v%1$s / SDK v%2$s</string>
+
     <string name="app_name">SACSMART</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="tab_text_1">Tab 1</string>

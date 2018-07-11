@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ import com.example.tan.mtapp.Adapter.OpenChatAdapter;
  * A simple {@link Fragment} subclass.
  */
 public class ChatFragment extends Fragment {
-    private static final String LOG_TAG = ChatFragment.class.getSimpleName();
+    private static final String TAG = ChatFragment.class.getSimpleName();
 
     private static final int CHANNEL_LIST_LIMIT = 30;
     private static final String CONNECTION_HANDLER_ID = "CONNECTION_HANDLER_OPEN_CHAT";
@@ -67,6 +68,7 @@ public class ChatFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chat, container, false);
     }

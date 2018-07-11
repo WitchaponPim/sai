@@ -51,11 +51,11 @@ dependencies {
     implementation 'com.sendbird.sdk:sendbird-android-sdk:3.0.65'
 
     // Android support libraries
-    implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
 
     // Firebase
     implementation 'com.google.firebase:firebase-messaging:15.0.2'

@@ -10,12 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tan.mtapp.API.ActivityCallbackListener;
 import com.example.tan.mtapp.API.ConnectionManager;
 import com.example.tan.mtapp.API.ConnectionManagers;
 import com.example.tan.mtapp.API.LoginCallbackListener;
+import com.example.tan.mtapp.JClass.BaseApplication;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.UserModel;
 import com.example.tan.mtapp.staticPack.PreferenceUtils;
@@ -140,9 +142,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-//        if (PreferenceUtils.getConnected()) {
-//            connectToSendBird(PreferenceUtils.getUserId(), PreferenceUtils.getNickname());
-//        }
+        if (PreferenceUtils.getConnected()) {
+            connectToSendBird(PreferenceUtils.getUserId(), PreferenceUtils.getNickname());
+        }
     }
 
     public void login() {
@@ -158,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
 
         connect.login(loginCallbackListener, username, password);
 
-//        connectToSendBird(username, "User_" + username);
+        connectToSendBird(username, "User_" + username);
 
     }
 
@@ -205,6 +207,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onConnected(User user, SendBirdException e) {
                 if (e != null) {
                     // Error!
+                    Log.d(TAG, "onConnected: " + e.getMessage());
                     Toast.makeText(
                             LoginActivity.this, "" + e.getCode() + ": " + e.getMessage(),
                             Toast.LENGTH_SHORT)
@@ -237,6 +240,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onUpdated(SendBirdException e) {
                 if (e != null) {
                     // Error!
+                    Log.d(TAG, "onUpdated: " + e.getMessage());
                     Toast.makeText(
                             LoginActivity.this, "" + e.getCode() + ":" + e.getMessage(),
                             Toast.LENGTH_SHORT)
