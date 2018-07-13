@@ -21,6 +21,7 @@ import com.example.tan.mtapp.Model.ReserveModel;
 import com.example.tan.mtapp.Model.SeatModel;
 import com.example.tan.mtapp.staticPack.StaticClass;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Retrofit;
@@ -34,6 +35,8 @@ public class ReserveActivity extends AppCompatActivity {
     GridLayoutManager mGridLayoutManager;
     Button mRegis;
     TextView sdate, edate, dis, act;
+    ArrayList<String> sit_set = new ArrayList<>();
+    String Sit_ID;
     String ID;
     ConnectionManager connect = new ConnectionManager();
     AcDetailCallbackListener acDetailCallbackListener = new AcDetailCallbackListener() {
@@ -118,11 +121,10 @@ public class ReserveActivity extends AppCompatActivity {
 
 
                         adapter.notifyDataSetChanged();
+                        //23,23,23,23,23,23
+
                         StaticClass.toast(getApplicationContext(), String.valueOf(position));
-//                        connect.postSeat(reservActivity,
-//                                StaticClass.ACTIVITY_PICKER.getId_activity()
-//                                , StaticClass.USER_MODEL.getProfile().getId_member()
-//                                , activityAdapters.get(position).getId_sit());
+
 //                        connect.getAcDetail(acDetailCallbackListener, StaticClass.USER_MODEL.getProfile().getUsername());
 
                     } else {
@@ -140,12 +142,41 @@ public class ReserveActivity extends AppCompatActivity {
                     return 1;
                 }
             });
+            mRegis.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    sit_set = new ArrayList<>();
+                    for (int i =0;i<StaticClass.seatRoom.size();i++){
+                        if (StaticClass.seatRoom.get(i).getCheck()!=null){
+                            if (StaticClass.seatRoom.get(i).getCheck().equals("1")){
+                                sit_set.add(StaticClass.seatRoom.get(i).getId_sit());
+                            }
+                        }
+                    }
+
+                        StringBuffer sb = new StringBuffer(sit_set.get(0));
+                        for (int i = 0; i < sit_set.size(); i++) {
+                            if (i == 0) {
+                            } else {
+                                sb.append("," + sit_set.get(i));
+                            }
+                        }
+
+
+
+                    Log.d("Ammy", "onClick: " + sb.toString());
+//                    connect.postSeat(reserveCallbackListener,
+//                            StaticClass.ACTIVITY_PICKER.getId_activity()
+//                            , StaticClass.USER_MODEL.getProfile().getId_member()
+//                            , "");
+                }
+            });
         } else {
 //            connect.getAcDetail(acDetailCallbackListener, StaticClass.USER_MODEL.getProfile().getUsername());
             mRegis.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    connect.postSeat(reservActivity,
+//                    connect.postSeat(reserveCallbackListener,
 //                            StaticClass.ACTIVITY_PICKER.getId_activity()
 //                            , StaticClass.USER_MODEL.getProfile().getId_member()
 //                            , "-1");
