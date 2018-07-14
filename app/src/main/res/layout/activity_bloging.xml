@@ -6,47 +6,46 @@
     android:layout_height="match_parent"
     android:background="@drawable/vv"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".BLogingActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:scaleType="fitCenter"
+        android:layout_height="200dp"
+        android:src="@drawable/sac"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="81dp"
-        android:layout_weight=".1"
-        android:gravity="center_vertical|center_horizontal"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
         android:text="Please Select to Login"
         android:textSize="24sp" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight=".45"
-        android:gravity="bottom"
-        android:padding="15sp">
 
         <Button
             android:id="@+id/btnLogin1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:text="Member"
             android:textColor="#fff"
             android:theme="@style/MyButton" />
 
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight=".45"
-        android:padding="15sp">
 
         <Button
             android:id="@+id/btnLogin2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:text="Attende"
             android:textColor="#fff"
             android:theme="@style/MyButton" />
 
-    </RelativeLayout>
 </LinearLayout>

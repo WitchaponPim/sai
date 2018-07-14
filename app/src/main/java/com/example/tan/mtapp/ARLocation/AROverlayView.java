@@ -25,16 +25,21 @@ public class AROverlayView extends View {
     private float[] rotatedProjectionMatrix = new float[16];
     private Location currentLocation;
     private List<ARPoint> arPoints;
+    Location locationA = new Location("ตึก 9 CS");
+
+
 
 
     public AROverlayView(Context context) {
         super(context);
 
         this.context = context;
-
+        locationA.setLatitude(13.778465);
+        locationA.setLongitude(100.557100);
+        locationA.setAltitude(0);
         //Demo points
         arPoints = new ArrayList<ARPoint>() {{
-            add(new ARPoint("ตึก 9 CS", 13.778465, 100.557100, 0));
+            add(new ARPoint(locationA.getProvider(),locationA.getLatitude(),locationA.getLongitude(),locationA.getAltitude()));
             add(new ARPoint("ตึก 9 CS ชั้น 5", 13.778465, 100.557100, 1500));
             add(new ARPoint("ตึก 9 CS ชั้น 8", 13.778465, 100.557100, 2500));
             add(new ARPoint("MRT Rama9", 13.757729, 100.565215, -700));
@@ -82,7 +87,7 @@ public class AROverlayView extends View {
                 float y = (0.5f - cameraCoordinateVector[1]/cameraCoordinateVector[3]) * canvas.getHeight();
 
                 canvas.drawCircle(x, y, radius, paint);
-                canvas.drawText(arPoints.get(i).getName(), x - (20 * arPoints.get(i).getName().length() / 2), y - 200, paint);
+                canvas.drawText(arPoints.get(i).getName()+" to "+locationA.distanceTo(currentLocation), x - (20 * arPoints.get(i).getName().length() / 2), y - 200, paint);
             }
         }
     }
