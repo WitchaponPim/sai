@@ -65,7 +65,7 @@ public class ReserveActivity extends AppCompatActivity {
                     finish();
                     Log.d(TAG, "seatClick: getid_reserve"+ StaticClass.ACTIVITY_QR.getId_reserve());
 
-//                    startActivity(intent);
+                    startActivity(intent);
                 }
             });
             builder.show();
@@ -165,10 +165,10 @@ public class ReserveActivity extends AppCompatActivity {
 
 
                     Log.d("Ammy", "onClick: " + sb.toString());
-//                    connect.postSeat(reserveCallbackListener,
-//                            StaticClass.ACTIVITY_PICKER.getId_activity()
-//                            , StaticClass.USER_MODEL.getProfile().getId_member()
-//                            , "");
+                    connect.postSeat(reserveCallbackListener,
+                            StaticClass.ACTIVITY_PICKER.getId_activity()
+                            , StaticClass.USER_MODEL.getProfile().getId_member()
+                            , sb.toString());
                 }
             });
         } else {
