@@ -43,12 +43,14 @@
             <Button
                 android:textColor="#ffff"
                 android:text="Login"
+                android:id="@+id/btnloginAT"
                 android:theme="@style/MyButton"
                 android:layout_weight=".5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
             <Button
                 android:textColor="#ffff"
+                android:id="@+id/btnregisAT"
                 android:text="Register"
                 android:theme="@style/MyButton"
                 android:layout_weight=".5"

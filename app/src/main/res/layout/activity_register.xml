@@ -182,18 +182,20 @@
                 android:hint="Age"
                 android:inputType="number"
                 android:textSize="14sp" />
-            <EditText
+
+            <Spinner
                 android:id="@+id/txtjob"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_bg"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_height="@dimen/edt_bg"
                 android:background="@drawable/edt_bg_login"
-                android:paddingLeft="10dp"
                 android:ems="10"
                 android:hint="Job"
-                android:inputType="text"
+                android:inputType="textAutoComplete"
+                android:paddingLeft="10dp"
+                android:spinnerMode="dialog"
                 android:textSize="14sp" />
 
 

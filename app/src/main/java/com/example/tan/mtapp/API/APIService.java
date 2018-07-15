@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.example.tan.mtapp.Model.AcDetailModel;
 import com.example.tan.mtapp.Model.ActivityModel;
 import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.Model.JobModel;
 import com.example.tan.mtapp.Model.ReserveModel;
 import com.example.tan.mtapp.Model.SearchModel;
 import com.example.tan.mtapp.Model.SeatModel;
@@ -26,6 +27,10 @@ public interface APIService {
                               @Field("password") String pass);
 
     @FormUrlEncoded
+    @POST("login.php")
+    Call<UserModel> postLoginAT(@Field("idCard") String idCard);
+
+    @FormUrlEncoded
     @POST("register.php")
     Call<UserModel> postRegis(@Field("username") String user,
                               @Field("password") String pass,
@@ -33,6 +38,9 @@ public interface APIService {
                               @Field("surname") String surname,
                               @Field("email") String email,
                               @Field("address") String address,
+                              @Field("age") String age,
+                              @Field("sex") String sex,
+                              @Field("job") String job,
                               @Field("tel") String tel);
 
     @GET("getActivity.php")
@@ -40,6 +48,9 @@ public interface APIService {
 
     @GET("getSearch.php")
     Call<List<SearchModel>> getSearch();
+
+    @GET("getJobDetail.php")
+    Call<List<JobModel>> getJobDetail();
 
     @FormUrlEncoded
     @POST("postActivity.php")

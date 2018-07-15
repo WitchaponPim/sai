@@ -6,10 +6,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.tan.mtapp.API.ConnectionManager;
+import com.example.tan.mtapp.API.JobCallbackListener;
+import com.example.tan.mtapp.Model.JobModel;
 import com.example.tan.mtapp.staticPack.StaticClass;
+
+import java.util.List;
+
+import retrofit2.Retrofit;
 
 public class BLogingActivity extends AppCompatActivity {
     Button mToLogin, mToID;
+    ConnectionManager connect;
+    JobCallbackListener jobCallbackListener = new JobCallbackListener() {
+        @Override
+        public void onResponse(List<JobModel> jobModel, Retrofit retrofit) {
+            StaticClass.JOB_MODEL = jobModel;
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
