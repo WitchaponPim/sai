@@ -35,7 +35,8 @@ public class PaymentActivity extends AppCompatActivity {
     Button picker, upload;
     String mIDMember = StaticClass.USER_MODEL.getProfile().getId_member();
     String mIDActivity = StaticClass.ACTIVITY_QR.getId_reserve();
-    String mIDReserve = StaticClass.ACTIVITY_QR.getId_reserve();;
+    String mIDReserve = StaticClass.ACTIVITY_QR.getId_reserve();
+    ;
     String TAG = "Payment";
     File file;
 
@@ -67,7 +68,7 @@ public class PaymentActivity extends AppCompatActivity {
                 .setpickPhotoRequestCode(123)
                 .resetToCorrectOrientation(true)
                 .setDirectory("DCIM/Camera/")
-                .setName("IMG_")
+                .setName(String.format("IMG_%d", System.currentTimeMillis()))
                 .setImageFormat(Gallery.IMAGE_JPG)
                 .setCompression(75)
                 .setImageHeight(1000)
@@ -122,12 +123,12 @@ public class PaymentActivity extends AppCompatActivity {
         call.enqueue(new Callback<UpPicModel>() {
             @Override
             public void onResponse(Call<UpPicModel> call, Response<UpPicModel> response) {
-                Log.d(TAG, "onResponse: " + response.toString());
+                Log.d(TAG, "onResponse1: " + response.toString());
                 UpPicModel serverResponse = response.body();
                 if (serverResponse != null) {
                     if (serverResponse.isSuccess()) {
-                        Log.d(TAG, "onResponse : " + serverResponse.getMessage());
                         finish();
+                        Log.d(TAG, "onResponse2 : " + serverResponse.getMessage());
                     } else {
 
                     }

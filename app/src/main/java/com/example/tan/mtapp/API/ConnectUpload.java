@@ -5,7 +5,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ConnectUpload {
 
-    public static final  String URL = "http://10.10.95.18/api/";
+//    public static final  String URL = "http://10.10.95.18/api/";
+    public static final  String URL = "http://meeting.wat-huathanon.com/api/";
+
     private static Retrofit retrofit = null;
     public static int unique_id;
 
