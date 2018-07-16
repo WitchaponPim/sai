@@ -103,10 +103,10 @@ public class MenuActivity extends AppCompatActivity {
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         connect.getAc(activityCallbackListener);
-        if (StaticClass.USER_MODEL_AT.getProfile().getType().isEmpty()) {
+//        if (StaticClass.USER_MODEL_AT.getProfile().getType().isEmpty()) {
             connect.getSearch(searchCallbackListener);
             connect.getHistory(historyCallbackListener, StaticClass.USER_MODEL.getProfile().getId_member());
-        }
+//        }
 //        connect.getHistory(historyCallbackListener,StaticClass.USER_MODEL.getProfile().getId_member());
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -127,7 +127,7 @@ public class MenuActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            if (StaticClass.USER_MODEL_AT.getProfile().getType().isEmpty()) {
+//            if (StaticClass.USER_MODEL_AT.getProfile().getType().isEmpty()) {
                 switch (position) {
                     case 0:
                         return new HomeFragment();
@@ -142,24 +142,24 @@ public class MenuActivity extends AppCompatActivity {
                     default:
                         return new ChatFragment();
                 }
-            } else {
-                switch (position) {
-                    case 0:
-                        return new HomeFragment();
-                    default:
-                        return new ActivityFragment();
-                }
-            }
+//            } else {
+//                switch (position) {
+//                    case 0:
+//                        return new HomeFragment();
+//                    default:
+//                        return new ActivityFragment();
+//                }
+//            }
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            if (StaticClass.USER_MODEL_AT.getProfile().getType().isEmpty()) {
+//            if (StaticClass.USER_MODEL_AT.getProfile().getType().isEmpty()) {
                 return 4;
-            } else {
-                return 2;
-            }
+//            } else {
+//                return 2;
+//            }
         }
 
         @Override
