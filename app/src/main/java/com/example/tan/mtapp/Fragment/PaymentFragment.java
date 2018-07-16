@@ -15,7 +15,7 @@ import com.example.tan.mtapp.API.ConnectionManager;
 import com.example.tan.mtapp.API.HistoryCallbackListener;
 import com.example.tan.mtapp.Adapter.ConfirmAdapter;
 import com.example.tan.mtapp.Adapter.CustomDialog_detail;
-import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.Model.HistoryModel;
 import com.example.tan.mtapp.R;
 import com.example.tan.mtapp.staticPack.StaticClass;
 
@@ -38,8 +38,8 @@ public class PaymentFragment extends Fragment {
     HistoryCallbackListener historyCallbackListener = new HistoryCallbackListener() {
 
         @Override
-        public void onResponse(List<HistoryMedel> historyMedel, Retrofit retrofit) {
-            StaticClass.HISTORY_MODEL = historyMedel;
+        public void onResponse(List<HistoryModel> historyModel, Retrofit retrofit) {
+            StaticClass.HISTORY_MODEL = historyModel;
         }
 
         @Override
@@ -84,7 +84,7 @@ public class PaymentFragment extends Fragment {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.reHis);
         adapter = new ConfirmAdapter(getContext(), StaticClass.HISTORY_MODEL, new ConfirmAdapter.OnItemClickListener() {
             @Override
-            public void moreClick(HistoryMedel.DetailBean activityAdapters, int position) {
+            public void moreClick(HistoryModel.DetailBean activityAdapters, int position) {
                 CustomDialog_detail cdd = new CustomDialog_detail(getActivity(),activityAdapters);
                 cdd.show();
             }

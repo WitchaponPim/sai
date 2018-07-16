@@ -1,20 +1,14 @@
 package com.example.tan.mtapp.API;
 
-import android.telecom.Call;
-
 import com.example.tan.mtapp.Model.AcDetailModel;
 import com.example.tan.mtapp.Model.ActivityModel;
-import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.Model.HistoryModel;
 
 import com.example.tan.mtapp.Model.JobModel;
 import com.example.tan.mtapp.Model.ReserveModel;
 import com.example.tan.mtapp.Model.SearchModel;
 import com.example.tan.mtapp.Model.SeatModel;
 import com.example.tan.mtapp.Model.UserModel;
-import com.example.tan.mtapp.staticPack.PreferenceUtils;
-import com.sendbird.android.SendBird;
-import com.sendbird.android.SendBirdException;
-import com.sendbird.android.User;
 
 import java.util.List;
 
@@ -295,11 +289,11 @@ public class ConnectionManager {
     }
 
     public void getHistory(final HistoryCallbackListener listener, String member_id) {
-        retrofit2.Call<List<HistoryMedel>> call = con.getHistory(member_id);
-        call.enqueue(new Callback<List<HistoryMedel>>() {
+        retrofit2.Call<List<HistoryModel>> call = con.getHistory(member_id);
+        call.enqueue(new Callback<List<HistoryModel>>() {
             @Override
-            public void onResponse(retrofit2.Call<List<HistoryMedel>> call, Response<List<HistoryMedel>> response) {
-                List<HistoryMedel> model = response.body();
+            public void onResponse(retrofit2.Call<List<HistoryModel>> call, Response<List<HistoryModel>> response) {
+                List<HistoryModel> model = response.body();
                 if (model == null) {
                     //404 or the response cannot be converted to User.
                     ResponseBody responseBody = response.errorBody();
@@ -310,7 +304,7 @@ public class ConnectionManager {
             }
 
             @Override
-            public void onFailure(retrofit2.Call<List<HistoryMedel>> call, Throwable t) {
+            public void onFailure(retrofit2.Call<List<HistoryModel>> call, Throwable t) {
                 listener.onFailure(t);
             }
         });

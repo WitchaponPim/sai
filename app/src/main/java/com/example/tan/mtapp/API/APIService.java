@@ -1,10 +1,8 @@
 package com.example.tan.mtapp.API;
 
-import android.app.Activity;
-
 import com.example.tan.mtapp.Model.AcDetailModel;
 import com.example.tan.mtapp.Model.ActivityModel;
-import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.Model.HistoryModel;
 import com.example.tan.mtapp.Model.JobModel;
 import com.example.tan.mtapp.Model.ReserveModel;
 import com.example.tan.mtapp.Model.SearchModel;
@@ -74,6 +72,6 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("getHistory.php")
-    Call<List<HistoryMedel>> getHistory(@Field("idMem") String idMem);
+    Call<List<HistoryModel>> getHistory(@Field("idMem") String idMem);
 
 }

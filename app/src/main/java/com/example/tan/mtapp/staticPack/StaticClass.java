@@ -5,13 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
-import android.view.Gravity;
 import android.widget.Toast;
 
-import com.example.tan.mtapp.API.AcDetailCallbackListener;
 import com.example.tan.mtapp.Model.AcDetailModel;
 import com.example.tan.mtapp.Model.ActivityModel;
-import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.Model.HistoryModel;
 import com.example.tan.mtapp.Model.JobModel;
 import com.example.tan.mtapp.Model.ReserveModel;
 import com.example.tan.mtapp.Model.SearchModel;
@@ -31,7 +29,7 @@ public class StaticClass {
     public static UserModel USER_MODEL_AT;
     public static ActivityModel ACTIVITY_MODEL;
     public static ActivityModel ACTIVITY_MODEL2;
-    public static List<HistoryMedel> HISTORY_MODEL;
+    public static List<HistoryModel> HISTORY_MODEL;
     public static ActivityModel.DetailBean ACTIVITY_PICKER;
     public static AcDetailModel ACTIVITY_DETAIL;
     public static ReserveModel ACTIVITY_QR;

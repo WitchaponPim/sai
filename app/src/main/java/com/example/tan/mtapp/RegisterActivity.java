@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -34,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText mName, mSurname, mUsername, mPassword, mRePassword, mEmail, mAddress, mTel, mAge;
     RadioButton mRd1, mRd2;
     List<JobModel> LmJob;
+    ArrayList<String> listspinner = new ArrayList<String>();
     Spinner mJob;
     String TAG = "Debug => ";
     String status;
@@ -106,8 +108,17 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 //        final List<String> plantsList = new ArrayList<>(Arrays.asList(plants));
+        Log.d(TAG, "onCreate: " + StaticClass.JOB_MODEL.get(0).getJob_name());
+//        mJob.setPrompt("Select an item");
 
-        mJob.setPrompt("Select an item");
+        for (int i = 0; i < StaticClass.JOB_MODEL.size(); i++) {
+            listspinner.add(StaticClass.JOB_MODEL.get(i).getJob_name());
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, listspinner);
+
+        mJob.setAdapter(adapter);
+
 //        mJob.setAdapter(StaticClass.JOB_MODEL);
 
 
@@ -133,7 +144,7 @@ public class RegisterActivity extends AppCompatActivity {
         String Address = mAddress.getText().toString();
         String Tel = mTel.getText().toString();
         String Sex;
-//        String Job = mJob.getTransitionName().toString();
+        String Job = mJob.getSelectedItem().toString();
         String Age = mAge.getText().toString();
 
         if (mRd1.isChecked()) {
@@ -142,8 +153,11 @@ public class RegisterActivity extends AppCompatActivity {
             Sex = "F";
         }
 
+
+
+
         if (Password.equals(RePassword)) {
-            connect.regis(registerCallbackListener, Username, Password, Name, Surname, Email, Address, Age, "พนักงาน", Sex, Tel);
+            connect.regis(registerCallbackListener, Username, Password, Name, Surname, Email, Address, Age, Job, Sex, Tel);
         } else {
             progressDialog.dismiss();
             mPassword.setError("please fill password");

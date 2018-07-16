@@ -3,7 +3,6 @@ package com.example.tan.mtapp.Adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,23 +10,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tan.mtapp.Model.ActivityModel;
-import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.Model.HistoryModel;
 import com.example.tan.mtapp.R;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 public class ConfirmAdapter extends RecyclerView.Adapter<ConfirmAdapter.MenuViewHolder> {
     String TAG ="Adapter";
     Context mContext;
-    List<HistoryMedel> history;
+    List<HistoryModel> history;
     OnItemClickListener mListener;
     String URL = "http://meeting.wat-huathanon.com";
 
-    public ConfirmAdapter(Context context, List<HistoryMedel> activityModels, OnItemClickListener listener) {
+    public ConfirmAdapter(Context context, List<HistoryModel> activityModels, OnItemClickListener listener) {
         this.mContext = context;
         this.history = activityModels;
         this.mListener = listener;
@@ -73,7 +69,7 @@ public class ConfirmAdapter extends RecyclerView.Adapter<ConfirmAdapter.MenuView
 
         }
 
-        public void setMenu(List<HistoryMedel> activityAdapters, int position) {
+        public void setMenu(List<HistoryModel> activityAdapters, int position) {
             String pic = null;
             date.setText(activityAdapters.get(position).getDate());
             act.setText(activityAdapters.get(position).getActivity_name());
@@ -92,6 +88,6 @@ public class ConfirmAdapter extends RecyclerView.Adapter<ConfirmAdapter.MenuView
     }
 
     public interface OnItemClickListener {
-        void moreClick(HistoryMedel.DetailBean activityAdapters, int position);
+        void moreClick(HistoryModel.DetailBean activityAdapters, int position);
     }
 }

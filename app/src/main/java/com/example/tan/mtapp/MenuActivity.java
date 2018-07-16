@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.tan.mtapp.API.ActivityCallbackListener;
 import com.example.tan.mtapp.API.ConnectionManager;
@@ -30,14 +29,9 @@ import com.example.tan.mtapp.Fragment.HomeFragment;
 import com.example.tan.mtapp.Fragment.PaymentFragment;
 import com.example.tan.mtapp.Fragment.SearchFragment;
 import com.example.tan.mtapp.Model.ActivityModel;
-import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.Model.HistoryModel;
 import com.example.tan.mtapp.Model.SearchModel;
-import com.example.tan.mtapp.staticPack.PreferenceUtils;
-import com.example.tan.mtapp.staticPack.PushUtils;
 import com.example.tan.mtapp.staticPack.StaticClass;
-import com.sendbird.android.SendBird;
-import com.sendbird.android.SendBirdException;
-import com.sendbird.android.User;
 
 import java.util.List;
 
@@ -82,8 +76,8 @@ public class MenuActivity extends AppCompatActivity {
     HistoryCallbackListener historyCallbackListener = new HistoryCallbackListener() {
 
         @Override
-        public void onResponse(List<HistoryMedel> historyMedel, Retrofit retrofit) {
-            StaticClass.HISTORY_MODEL = historyMedel;
+        public void onResponse(List<HistoryModel> historyModel, Retrofit retrofit) {
+            StaticClass.HISTORY_MODEL = historyModel;
         }
 
         @Override

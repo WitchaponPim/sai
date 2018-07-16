@@ -104,44 +104,47 @@
                 android:hint="Username"
                 android:inputType="textPersonName"
                 android:textSize="14sp" />
+
             <EditText
                 android:id="@+id/txtPassRegis"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_bg"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_height="@dimen/edt_bg"
                 android:background="@drawable/edt_bg_login"
-                android:paddingLeft="10dp"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="textPersonName"
+                android:inputType="textWebPassword"
+                android:paddingLeft="10dp"
                 android:textSize="14sp" />
+
             <EditText
                 android:id="@+id/txtrepass"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_bg"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_height="@dimen/edt_bg"
                 android:background="@drawable/edt_bg_login"
-                android:paddingLeft="10dp"
                 android:ems="10"
                 android:hint="Re-Password"
-                android:inputType="textPersonName"
+                android:inputType="textWebPassword"
+                android:paddingLeft="10dp"
                 android:textSize="14sp" />
+
             <EditText
                 android:id="@+id/txtemail"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_bg"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_height="@dimen/edt_bg"
                 android:background="@drawable/edt_bg_login"
-                android:paddingLeft="10dp"
                 android:ems="10"
                 android:hint="E-mail"
-                android:inputType="textPersonName"
+                android:inputType="textWebEmailAddress"
+                android:paddingLeft="10dp"
                 android:textSize="14sp" />
             <EditText
                 android:id="@+id/txtaddress"
@@ -156,31 +159,35 @@
                 android:hint="Address"
                 android:inputType="textPersonName"
                 android:textSize="14sp" />
+
             <EditText
                 android:id="@+id/txttel"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_bg"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_height="@dimen/edt_bg"
                 android:background="@drawable/edt_bg_login"
-                android:paddingLeft="10dp"
                 android:ems="10"
                 android:hint="Tel."
                 android:inputType="textPersonName"
+                android:maxLength="10"
+                android:paddingLeft="10dp"
                 android:textSize="14sp" />
+
             <EditText
                 android:id="@+id/txtage"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_bg"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_height="@dimen/edt_bg"
                 android:background="@drawable/edt_bg_login"
-                android:paddingLeft="10dp"
                 android:ems="10"
                 android:hint="Age"
                 android:inputType="number"
+                android:maxLength="3"
+                android:paddingLeft="10dp"
                 android:textSize="14sp" />
 
             <Spinner

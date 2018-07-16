@@ -3,6 +3,7 @@ package com.example.tan.mtapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,7 +18,8 @@ import retrofit2.Retrofit;
 
 public class BLogingActivity extends AppCompatActivity {
     Button mToLogin, mToID;
-    ConnectionManager connect;
+    String TAG = "BLogingActivity";
+    ConnectionManager connect = new ConnectionManager();
     JobCallbackListener jobCallbackListener = new JobCallbackListener() {
         @Override
         public void onResponse(List<JobModel> jobModel, Retrofit retrofit) {
@@ -26,7 +28,7 @@ public class BLogingActivity extends AppCompatActivity {
 
         @Override
         public void onFailure(Throwable t) {
-
+            Log.d(TAG, "onFailure: " + t.getMessage());
         }
     };
 
@@ -37,6 +39,7 @@ public class BLogingActivity extends AppCompatActivity {
 
         mToID = (Button) findViewById(R.id.btnLogin2);
         mToLogin = (Button) findViewById(R.id.btnLogin1);
+        connect.getJobDetail(jobCallbackListener);
 
         mToLogin.setOnClickListener(new View.OnClickListener() {
             @Override

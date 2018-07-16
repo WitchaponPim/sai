@@ -68,6 +68,25 @@
                 android:id="@+id/btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="Add"
+                android:textColor="#fff"
+                android:theme="@style/MyButton" />
+
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="Payment"
+                android:textColor="#fff"
+                android:theme="@style/MyButton" />
+
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
                 android:text="Detail"
                 android:textColor="#fff"
                 android:theme="@style/MyButton" />

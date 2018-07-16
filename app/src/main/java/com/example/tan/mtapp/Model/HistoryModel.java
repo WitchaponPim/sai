@@ -2,7 +2,7 @@ package com.example.tan.mtapp.Model;
 
 import java.util.List;
 
-public class HistoryMedel {
+public class HistoryModel {
 
     /**
      * id_register : 38

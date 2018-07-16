@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tan.mtapp.Model.HistoryMedel;
+import com.example.tan.mtapp.Model.HistoryModel;
 import com.example.tan.mtapp.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -30,14 +30,14 @@ public class CustomDialog_detail extends Dialog implements android.view.View.OnC
     public Dialog d;
     public Button ok;
     TextView detail;
-    HistoryMedel.DetailBean detailBean;
+    HistoryModel.DetailBean detailBean;
     String a = "";
     private static ViewPager mPager;
     private static int currentPage = 0;
 
 
 
-    public CustomDialog_detail(Activity a, HistoryMedel.DetailBean detailBean) {
+    public CustomDialog_detail(Activity a, HistoryModel.DetailBean detailBean) {
         super(a);
         // TODO Auto-generated constructor stub
         this.detailBean = detailBean;
