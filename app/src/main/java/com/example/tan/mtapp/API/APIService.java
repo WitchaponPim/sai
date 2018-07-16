@@ -25,7 +25,7 @@ public interface APIService {
                               @Field("password") String pass);
 
     @FormUrlEncoded
-    @POST("login.php")
+    @POST("loginAtendee.php")
     Call<UserModel> postLoginAT(@Field("idCard") String idCard);
 
     @FormUrlEncoded
@@ -37,8 +37,8 @@ public interface APIService {
                               @Field("email") String email,
                               @Field("address") String address,
                               @Field("age") String age,
-                              @Field("sex") String sex,
                               @Field("job") String job,
+                              @Field("sex") String sex,
                               @Field("tel") String tel);
 
     @GET("getActivity.php")

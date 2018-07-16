@@ -103,8 +103,10 @@ public class MenuActivity extends AppCompatActivity {
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         connect.getAc(activityCallbackListener);
-        connect.getSearch(searchCallbackListener);
-        connect.getHistory(historyCallbackListener, StaticClass.USER_MODEL.getProfile().getId_member());
+        if (StaticClass.USER_MODEL_AT.getProfile().getType().isEmpty()) {
+            connect.getSearch(searchCallbackListener);
+            connect.getHistory(historyCallbackListener, StaticClass.USER_MODEL.getProfile().getId_member());
+        }
 //        connect.getHistory(historyCallbackListener,StaticClass.USER_MODEL.getProfile().getId_member());
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -125,26 +127,39 @@ public class MenuActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return new HomeFragment();
-                case 1:
-                    return new ActivityFragment();
-                case 2:
-                    if (StaticClass.USER_MODEL.getProfile().getType().equals("emp")) {
-                        return new SearchFragment();
-                    } else {
-                        return new PaymentFragment();
-                    }
-                default:
-                    return new ChatFragment();
+            if (StaticClass.USER_MODEL_AT.getProfile().getType().isEmpty()) {
+                switch (position) {
+                    case 0:
+                        return new HomeFragment();
+                    case 1:
+                        return new ActivityFragment();
+                    case 2:
+                        if (StaticClass.USER_MODEL.getProfile().getType().equals("emp")) {
+                            return new SearchFragment();
+                        } else {
+                            return new PaymentFragment();
+                        }
+                    default:
+                        return new ChatFragment();
+                }
+            } else {
+                switch (position) {
+                    case 0:
+                        return new HomeFragment();
+                    default:
+                        return new ActivityFragment();
+                }
             }
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 4;
+            if (StaticClass.USER_MODEL_AT.getProfile().getType().isEmpty()) {
+                return 4;
+            } else {
+                return 2;
+            }
         }
 
         @Override
@@ -209,7 +224,7 @@ public class MenuActivity extends AppCompatActivity {
                 return true;
 
             case R.id.EditPro:
-                intent = new Intent(MenuActivity.this, ScanActivity.class);
+                intent = new Intent(MenuActivity.this, EditProfileActivity.class);
                 startActivity(intent);
                 return true;
 

@@ -4,88 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d6c1df"
-    android:orientation="vertical"
-    tools:context=".RegisterActivity">
+    tools:context=".EditProfileActivity">
+
     <TextView
         android:id="@+id/regis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="Register"
         android:padding="10dp"
+        android:text="Edit Profile"
         android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textStyle="bold" />
+
     <ScrollView
-        android:layout_below="@id/regis"
-        android:layout_above="@id/btn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn"
+        android:layout_below="@id/regis">
+
         <LinearLayout
 
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
 
             <EditText
                 android:id="@+id/txtname"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_bg"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_height="@dimen/edt_bg"
                 android:background="@drawable/edt_bg_login"
-                android:paddingLeft="10dp"
                 android:ems="10"
                 android:hint="Name"
                 android:inputType="textPersonName"
+                android:paddingLeft="10dp"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/txtsurname"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_bg"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_height="@dimen/edt_bg"
                 android:background="@drawable/edt_bg_login"
-                android:paddingLeft="10dp"
                 android:ems="10"
                 android:hint="Lastname"
                 android:inputType="textPersonName"
+                android:paddingLeft="10dp"
                 android:textSize="14sp" />
+
             <LinearLayout
-                android:background="@drawable/edt_bg_login"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
+                android:background="@drawable/edt_bg_login"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingLeft="@dimen/fab_margin"
                     android:paddingRight="@dimen/fab_margin"
                     android:text="Gender" />
+
                 <RadioGroup
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
                     <RadioButton
                         android:id="@+id/r1"
-                        android:buttonTint="@color/colorPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
                         android:checked="true"
                         android:text="Male" />
+
                     <RadioButton
                         android:id="@+id/r2"
-                        android:buttonTint="@color/colorPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
                         android:text="Female" />
                 </RadioGroup>
 
@@ -94,15 +100,15 @@
             <EditText
                 android:id="@+id/txtusername"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_bg"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_height="@dimen/edt_bg"
                 android:background="@drawable/edt_bg_login"
-                android:paddingLeft="10dp"
                 android:ems="10"
                 android:hint="Username"
                 android:inputType="textPersonName"
+                android:paddingLeft="10dp"
                 android:textSize="14sp" />
 
             <EditText
@@ -146,18 +152,19 @@
                 android:inputType="textWebEmailAddress"
                 android:paddingLeft="10dp"
                 android:textSize="14sp" />
+
             <EditText
                 android:id="@+id/txtaddress"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/edt_bg"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_height="@dimen/edt_bg"
                 android:background="@drawable/edt_bg_login"
-                android:paddingLeft="10dp"
                 android:ems="10"
                 android:hint="Address"
                 android:inputType="textPersonName"
+                android:paddingLeft="10dp"
                 android:textSize="14sp" />
 
             <EditText
@@ -210,31 +217,33 @@
     </ScrollView>
 
 
-
     <LinearLayout
         android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btnsave"
             android:layout_width="0dp"
-            android:layout_weight=".5"
             android:layout_height="wrap_content"
+            android:layout_weight=".5"
             android:text="Save"
             android:textColor="#fff"
             android:theme="@style/MyButton" />
+
         <Button
             android:id="@+id/btncancel"
             android:layout_width="0dp"
-            android:layout_weight=".5"
             android:layout_height="wrap_content"
+            android:layout_weight=".5"
             android:text="Cancel"
             android:textColor="#fff"
             android:theme="@style/MyButton" />
     </LinearLayout>
+
 </RelativeLayout>

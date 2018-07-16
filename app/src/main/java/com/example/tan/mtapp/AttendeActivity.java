@@ -18,7 +18,7 @@ import retrofit2.Retrofit;
 
 public class AttendeActivity extends AppCompatActivity {
 
-    String TAG = "AttendeActivity";
+    String TAG = "";
     EditText mIdCard;
     Button mLogin,mRegis;
     ConnectionManager connect = new ConnectionManager();
@@ -27,6 +27,7 @@ public class AttendeActivity extends AppCompatActivity {
         public void onResponse(UserModel userModel, Retrofit retrofit) {
             Log.d(TAG, "onResponse: ");
             StaticClass.USER_MODEL_AT = userModel;
+            Log.d(TAG, "onResponse: ssClass " + userModel.getProfile().getType());
             startActivity(new Intent(AttendeActivity.this,MenuActivity.class));
         }
 

@@ -37,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     List<JobModel> LmJob;
     ArrayList<String> listspinner = new ArrayList<String>();
     Spinner mJob;
-    String TAG = "Debug => ";
+    String TAG = "RegisterActivity";
     String status;
     ConnectionManager connect = new ConnectionManager();
     RegisterCallbackListener registerCallbackListener;
@@ -152,9 +152,9 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             Sex = "F";
         }
+        Log.d(TAG, "regis: " + Sex);
 
-
-
+        Log.d(TAG, "regis: " + Username + Password + Name + Surname + Email + Address + Age + Job + Sex + Tel);
 
         if (Password.equals(RePassword)) {
             connect.regis(registerCallbackListener, Username, Password, Name, Surname, Email, Address, Age, Job, Sex, Tel);
