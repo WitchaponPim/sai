@@ -112,6 +112,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 //        String mIdRentel;
 //        String mFname,mSname;
+        Log.d(TAG, "uploadFile: " + mIDReserve);
         RequestBody id_activity = RequestBody.create(MediaType.parse("text/plain"), mIDActivity);
         RequestBody id_member = RequestBody.create(MediaType.parse("text/plain"), mIDMember);
         RequestBody id_reserve = RequestBody.create(MediaType.parse("text/plain"), mIDReserve);
@@ -137,7 +138,7 @@ public class PaymentActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UpPicModel> call, Throwable t) {
-
+                Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });
     }
