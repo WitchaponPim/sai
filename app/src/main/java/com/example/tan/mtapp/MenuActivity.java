@@ -135,15 +135,15 @@ public class MenuActivity extends AppCompatActivity {
                 case 0:
                     return new HomeFragment();
                 case 1:
-                    return new ChatFragment();
-                case 2:
                     return new ActivityFragment();
-                default:
+                case 2:
                     if (StaticClass.USER_MODEL.getProfile().getType().equals("emp")) {
                         return new SearchFragment();
                     } else {
                         return new PaymentFragment();
                     }
+                default:
+                    return new ChatFragment();
             }
         }
 
@@ -159,11 +159,11 @@ public class MenuActivity extends AppCompatActivity {
                 case 0:
                     return "Home";
                 case 1:
-                    return "Chat";
-                case 2:
                     return "Activity";
-                case 3:
+                case 2:
                     return "Payment";
+                case 3:
+                    return "Chat";
             }
             return null;
         }
@@ -197,6 +197,11 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_menu, menu);
+        if (StaticClass.USER_MODEL.getProfile().getType().equals("emp")) {
+            MenuItem QR = menu.findItem(R.id.QRScan);
+            QR.setVisible(true);
+            return true;
+        }
         return true;
     }
 
@@ -212,13 +217,16 @@ public class MenuActivity extends AppCompatActivity {
             case R.id.EditPro:
                 intent = new Intent(MenuActivity.this, ScanActivity.class);
                 startActivity(intent);
-//                finish();
                 return true;
 
             case R.id.ARMap:
                 intent = new Intent(MenuActivity.this, ARActivity.class);
                 startActivity(intent);
-//                finish();
+                return true;
+
+            case R.id.QRScan:
+                intent = new Intent(MenuActivity.this, ScanActivity.class);
+                startActivity(intent);
                 return true;
 
             default:

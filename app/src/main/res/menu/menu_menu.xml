@@ -17,4 +17,10 @@
         android:orderInCategory="100"
         android:title="AR Map"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/QRScan"
+        android:orderInCategory="100"
+        android:title="Scan QR"
+        android:visible="false"
+        app:showAsAction="never" />
 </menu>
